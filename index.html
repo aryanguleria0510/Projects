@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Fitness Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>FitLife</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#workouts" class="nav-link">Workouts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#goals" class="nav-link">Goals</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#nutrition" class="nav-link">Nutrition</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#progress" class="nav-link">Progress</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Fitness Journey</h1>
+                <p class="hero-subtitle">Track workouts, set goals, and achieve your fitness dreams with our comprehensive management system.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Workout Plans</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">User Rating</span>
+                    </div>
+                </div>
+                <button class="cta-button">Get Started Today</button>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <h3>Today's Summary</h3>
+                        <span class="date" id="current-date"></span>
+                    </div>
+                    <div class="card-content">
+                        <div class="summary-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Calories Burned: <strong id="calories-burned">0</strong></span>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Workout Time: <strong id="workout-time">0 min</strong></span>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-target"></i>
+                            <span>Goals Completed: <strong id="goals-completed">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workouts Section -->
+    <section id="workouts" class="workouts">
+        <div class="container">
+            <h2 class="section-title">Workout Plans</h2>
+            <div class="workout-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="strength">Strength</button>
+                <button class="filter-btn" data-filter="cardio">Cardio</button>
+                <button class="filter-btn" data-filter="flexibility">Flexibility</button>
+            </div>
+            <div class="workout-grid" id="workout-grid">
+                <!-- Workout cards will be populated by JavaScript -->
+            </div>
+            <div class="add-workout">
+                <button class="add-btn" id="add-workout-btn">
+                    <i class="fas fa-plus"></i>
+                    Add New Workout
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals" class="goals">
+        <div class="container">
+            <h2 class="section-title">Fitness Goals</h2>
+            <div class="goals-container">
+                <div class="goals-form">
+                    <h3>Set New Goal</h3>
+                    <form id="goal-form">
+                        <div class="form-group">
+                            <label for="goal-title">Goal Title</label>
+                            <input type="text" id="goal-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-type">Goal Type</label>
+                            <select id="goal-type" required>
+                                <option value="">Select Type</option>
+                                <option value="weight">Weight Loss</option>
+                                <option value="strength">Strength Gain</option>
+                                <option value="endurance">Endurance</option>
+                                <option value="flexibility">Flexibility</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-target">Target Value</label>
+                            <input type="number" id="goal-target" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-deadline">Deadline</label>
+                            <input type="date" id="goal-deadline" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Goal</button>
+                    </form>
+                </div>
+                <div class="goals-list">
+                    <h3>Your Goals</h3>
+                    <div id="goals-list">
+                        <!-- Goals will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section id="nutrition" class="nutrition">
+        <div class="container">
+            <h2 class="section-title">Nutrition Tips</h2>
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Healthy Eating</h3>
+                    <p>Focus on whole foods, lean proteins, and plenty of vegetables. Aim for a balanced diet with proper portion control.</p>
+                    <ul>
+                        <li>Eat more fruits and vegetables</li>
+                        <li>Choose lean protein sources</li>
+                        <li>Limit processed foods</li>
+                    </ul>
+                </div>
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Hydration</h3>
+                    <p>Stay hydrated throughout the day. Water is essential for muscle function and recovery.</p>
+                    <ul>
+                        <li>Drink 8-10 glasses daily</li>
+                        <li>Increase intake during workouts</li>
+                        <li>Monitor urine color</li>
+                    </ul>
+                </div>
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Meal Timing</h3>
+                    <p>Time your meals around your workouts for optimal performance and recovery.</p>
+                    <ul>
+                        <li>Eat 2-3 hours before exercise</li>
+                        <li>Refuel within 30 minutes after</li>
+                        <li>Don't skip breakfast</li>
+                    </ul>
+                </div>
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Calorie Tracking</h3>
+                    <p>Track your daily calorie intake to ensure you're meeting your fitness goals.</p>
+                    <ul>
+                        <li>Use a food diary app</li>
+                        <li>Read nutrition labels</li>
+                        <li>Be consistent with tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="progress">
+        <div class="container">
+            <h2 class="section-title">Progress Tracking</h2>
+            <div class="progress-container">
+                <div class="progress-chart">
+                    <h3>Weekly Progress</h3>
+                    <canvas id="progress-chart"></canvas>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Current Weight</h4>
+                            <span class="stat-value" id="current-weight">-- kg</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-ruler"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Body Fat %</h4>
+                            <span class="stat-value" id="body-fat">--%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Workouts This Week</h4>
+                            <span class="stat-value" id="weekly-workouts">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Calories Burned</h4>
+                            <span class="stat-value" id="weekly-calories">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitLife</h3>
+                    <p>Your comprehensive fitness management solution for achieving your health and wellness goals.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#workouts">Workouts</a></li>
+                        <li><a href="#goals">Goals</a></li>
+                        <li><a href="#nutrition">Nutrition</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FitLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="workout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Workout</h2>
+            <form id="workout-form">
+                <div class="form-group">
+                    <label for="workout-name">Workout Name</label>
+                    <input type="text" id="workout-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="workout-type">Type</label>
+                    <select id="workout-type" required>
+                        <option value="">Select Type</option>
+                        <option value="strength">Strength</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="flexibility">Flexibility</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workout-duration">Duration (minutes)</label>
+                    <input type="number" id="workout-duration" required>
+                </div>
+                <div class="form-group">
+                    <label for="workout-description">Description</label>
+                    <textarea id="workout-description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Add Workout</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
